@@ -9,4 +9,5 @@ import org.springframework.data.domain.Pageable;
 
 public interface ProductPersistencePort {
     public Page<Product> getAllProducts(Pageable pageable, SortType sort, SortingOrder orderBy);
+    public Page<Product> findAllProductsLikeName(String name, Pageable pageable, SortType sort, SortingOrder orderBy);
 }

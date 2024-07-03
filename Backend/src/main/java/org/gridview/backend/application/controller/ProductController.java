@@ -21,10 +21,10 @@ public class ProductController {
     ProductService service;
 
     @GetMapping("/products")
-    public ResponseEntity<org.gridview.backend.domain.Page<ProductDto>> getAllProducts(
+    public ResponseEntity<org.gridview.backend.domain.Page<ProductDto>> getAllProductsV2(@RequestParam(required = false) String name,
             @RequestParam int pageNo,@RequestParam int size, @RequestParam("sortType") String sortType,
             @RequestParam("order") String order) {
-        Page<ProductDto> ProductPage = service.getAllProducts(pageNo, size, SortType.valueOf(sortType.toUpperCase()), SortingOrder.valueOf(order.toUpperCase()));
+        Page<ProductDto> ProductPage = service.getAllProducts(name,pageNo, size, SortType.valueOf(sortType.toUpperCase()), SortingOrder.valueOf(order.toUpperCase()));
         return ResponseEntity.ok(ProductPage);
     }
 

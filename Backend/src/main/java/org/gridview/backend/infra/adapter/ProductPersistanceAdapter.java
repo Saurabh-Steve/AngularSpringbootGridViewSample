@@ -28,4 +28,12 @@ public class ProductPersistanceAdapter implements ProductPersistencePort {
         return productMapper.map(productRepository.findAll(request));
     }
 
+    @Override
+    public Page<Product> findAllProductsLikeName(String name, Pageable pageable, SortType sort, SortingOrder orderBy) {
+        Pageable request = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize()
+                , sortCategoryMapper.map(sort, orderBy));
+        return productMapper.map(productRepository.findAllLikeName(name, request));
+    }
+
+
 }

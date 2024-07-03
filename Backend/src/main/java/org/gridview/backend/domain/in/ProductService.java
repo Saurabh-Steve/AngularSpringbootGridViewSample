@@ -6,6 +6,5 @@ import org.gridview.backend.application.controller.dto.SortingOrder;
 import org.gridview.backend.domain.Page;
 
 public interface ProductService {
-
-    public Page<ProductDto> getAllProducts(int pageNo, int size, SortType sort, SortingOrder orderBy);
+    public Page<ProductDto> getAllProducts(String name, int pageNo, int size, SortType sort, SortingOrder orderBy);
 }
