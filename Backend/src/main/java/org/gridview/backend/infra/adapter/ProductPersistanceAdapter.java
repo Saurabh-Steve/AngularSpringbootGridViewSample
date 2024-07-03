@@ -35,5 +35,10 @@ public class ProductPersistanceAdapter implements ProductPersistencePort {
         return productMapper.map(productRepository.findAllLikeName(name, request));
     }
 
-
+    @Override
+    public Product updateProduct(Product product) {
+        org.gridview.backend.infra.entity.Product pdtEntity = productMapper.map(product);
+        org.gridview.backend.infra.entity.Product savedPdt = productRepository.save(pdtEntity);
+        return productMapper.reverseMap(savedPdt);
+    }
 }

@@ -6,12 +6,8 @@ import org.gridview.backend.application.controller.dto.SortingOrder;
 import org.gridview.backend.domain.Page;
 import org.gridview.backend.domain.in.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
@@ -28,4 +24,9 @@ public class ProductController {
         return ResponseEntity.ok(ProductPage);
     }
 
+    @PostMapping("/product/update")
+    public ResponseEntity<ProductDto> updateProduct(@RequestBody ProductDto product) {
+        ProductDto result = service.updateProduct(product);
+        return ResponseEntity.ok(result);
+    }
 }

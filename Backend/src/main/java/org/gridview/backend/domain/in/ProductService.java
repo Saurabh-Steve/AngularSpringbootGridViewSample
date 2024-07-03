@@ -7,4 +7,5 @@ import org.gridview.backend.domain.Page;
 
 public interface ProductService {
     public Page<ProductDto> getAllProducts(String name, int pageNo, int size, SortType sort, SortingOrder orderBy);
+    ProductDto updateProduct(ProductDto product);
 }

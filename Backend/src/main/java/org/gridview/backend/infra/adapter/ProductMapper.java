@@ -14,4 +14,15 @@ public class ProductMapper {
         ,p.getRating(), p.getImage(), p.getDescription())).toList();
         return new Page<Product>(products, pdts.getNumber(), pdts.hasNext(), pdts.getTotalPages());
     }
+
+    public Product reverseMap(org.gridview.backend.infra.entity.Product entity) {
+        return Product.builder().id(entity.getId()).name(entity.getName()).price(entity.getPrice())
+                .rating(entity.getRating()).image(entity.getImage()).description(entity.getDescription()).build();
+    }
+
+    public org.gridview.backend.infra.entity.Product map(Product product) {
+        return org.gridview.backend.infra.entity.Product.builder().id(product.getId()).name(product.getName())
+                .price(product.getPrice()).rating(product.getRating()).image(product.getImage()).description(product.getDescription()).build();
+
+    }
 }

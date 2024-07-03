@@ -27,5 +27,9 @@ public class ProductServiceImpl implements ProductService {
         return new Page<ProductDto>(products, page.getNumber(), page.isHasNext(), page.getTotalPages());
     }
 
-
+    @Override
+    public ProductDto updateProduct(ProductDto product) {
+        Product updatedProduct = productPersistencePort.updateProduct(new Product(product.getId(), product.getName(), product.getPrice(), product.getRating(), product.getImage(), product.getDescription()));
+        return new ProductDto(updatedProduct.getId(), updatedProduct.getName(), updatedProduct.getPrice(), updatedProduct.getRating(), updatedProduct.getImage(), updatedProduct.getDescription());
+    }
 }
