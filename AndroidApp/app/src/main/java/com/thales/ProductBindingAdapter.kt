@@ -1,7 +1,6 @@
 package com.thales
 
 import android.graphics.drawable.Drawable
-import android.os.Build
 import android.text.Html
 import android.text.Spannable
 import android.text.Spanned
@@ -46,7 +45,7 @@ object ProductBindingAdapter {
             Glide
                 .with(imageView.context)
                 .load(imageUrl)
-                .placeholder(R.drawable.placeholder)
+                .placeholder(R.drawable.error_state)
                 .addListener(object : RequestListener<Drawable> {
                     override fun onLoadFailed(
                         e: GlideException?,
@@ -55,6 +54,7 @@ object ProductBindingAdapter {
                         isFirstResource: Boolean
                     ): Boolean {
                         imageView.setImageDrawable(imageView.context.getDrawable(R.drawable.placeholder))
+                        e?.printStackTrace()
                         return true
                     }
 
