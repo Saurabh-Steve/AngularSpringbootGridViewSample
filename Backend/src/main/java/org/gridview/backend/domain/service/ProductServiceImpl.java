@@ -20,8 +20,15 @@ public class ProductServiceImpl implements ProductService {
     ProductPersistencePort productPersistencePort;
 
     @Override
+    public ProductDto addProduct(ProductDto product) {
+      Product savedPdt = productPersistencePort.addProduct(new Product(product.getId(), product.getName(), product.getPrice(), product.getRating(), product.getImage(), product.getDescription()));
+        return new ProductDto(savedPdt.getId(), savedPdt.getName(), savedPdt.getPrice(), savedPdt.getRating(), savedPdt.getImage(), savedPdt.getDescription());
+
+    }
+
+    @Override
     public Page<ProductDto> getAllProducts(String name, int pageNo, int size, SortType sort, SortingOrder order) {
-        String searchCriteria = name == null ? "*" : name;
+        String searchCriteria = name == null ? "%" : name;
         Page<Product> page= productPersistencePort.findAllProductsLikeName(searchCriteria, PageRequest.of(pageNo, size), sort, order);
         List products = page.getContent().stream().map(p -> new Product(p.getId(), p.getName(), p.getPrice(), p.getRating(), p.getImage(), p.getDescription())).toList();
         return new Page<ProductDto>(products, page.getNumber(), page.isHasNext(), page.getTotalPages());

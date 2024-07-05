@@ -16,6 +16,11 @@ public class ProductController {
     @Autowired
     ProductService service;
 
+    @PostMapping("/product")
+    public ResponseEntity<ProductDto> addProduct(@RequestBody ProductDto product) {
+        ProductDto result = service.addProduct(product);
+        return ResponseEntity.ok(result);
+    }
     @GetMapping("/products")
     public ResponseEntity<org.gridview.backend.domain.Page<ProductDto>> getAllProductsV2(@RequestParam(required = false) String name,
             @RequestParam int pageNo,@RequestParam int size, @RequestParam("sortType") String sortType,

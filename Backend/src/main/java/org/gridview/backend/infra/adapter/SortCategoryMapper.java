@@ -13,7 +13,7 @@ public class SortCategoryMapper {
     }
 
     private static Sort getSortCriteria(SortType sort) {
-        if(sort == null)
+        if(sort == null || sort.equals(SortType.ID))
             return Sort.by("id");
         else if( sort.equals(SortType.NAME) ){
             return Sort.by("name");

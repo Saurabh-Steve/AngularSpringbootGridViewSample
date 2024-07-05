@@ -22,6 +22,13 @@ public class ProductPersistanceAdapter implements ProductPersistencePort {
     private ProductMapper productMapper;
 
     @Override
+    public Product addProduct(Product product) {
+        org.gridview.backend.infra.entity.Product pdtEntity = productMapper.map(product);
+        org.gridview.backend.infra.entity.Product saved = productRepository.save(pdtEntity);
+        return productMapper.reverseMap(saved);
+    }
+
+    @Override
     public Page<Product> getAllProducts(Pageable pageable, SortType sort, SortingOrder orderBy) {
         Pageable request = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize()
                 , sortCategoryMapper.map(sort, orderBy));
