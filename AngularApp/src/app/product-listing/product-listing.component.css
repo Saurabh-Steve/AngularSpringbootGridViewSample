@@ -1,0 +1,23 @@
+.container {
+    position: relative;
+    margin-top: 80px;
+    padding-inline: 80px;
+    padding-bottom: 50px;
+}
+.product-top-container {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    margin-inline: 2.5%;
+}
+
+.search-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: normal;
+}
+
+.input-search {
+    height: 73px;
+    background-color: #dbdbdb;
+}
