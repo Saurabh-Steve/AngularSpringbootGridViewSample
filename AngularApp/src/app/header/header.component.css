@@ -1,0 +1,40 @@
+.fixed-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: 50px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    background-color: rgb(24, 132, 226);
+}
+
+.navbar-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.heading-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    color : white
+}
+
+.thales-logo {
+    height: 25px;
+    padding-left: 20px;
+}
+
+.contact-icon {
+    height: 30px;
+}
+
+.personal-info-container {
+    display: flex;
+    width: 10%;
+    justify-content: space-around;
+    align-items: center;
+}
