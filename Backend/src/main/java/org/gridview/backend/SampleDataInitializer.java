@@ -25,7 +25,7 @@ public class SampleDataInitializer implements ApplicationRunner {
                 .description("table")
                 .rating(1)
                 .price("100")
-                .image("sample.jpg")
+                .image("https://www.shutterstock.com/image-vector/wooden-special-table-isolate-on-white-2442457999")
                 .build();
         productRepository.save(pd1);
 
@@ -35,7 +35,7 @@ public class SampleDataInitializer implements ApplicationRunner {
                 .description("Chair")
                 .rating(2)
                 .price("100")
-                .image("sample.jpg")
+                .image("https://www.shutterstock.com/image-vector/wooden-special-table-isolate-on-white-2442457999")
                 .build();
         productRepository.save(pd2);
 
@@ -45,7 +45,7 @@ public class SampleDataInitializer implements ApplicationRunner {
                 .description("pillow")
                 .rating(3)
                 .price("100")
-                .image("sample.jpg")
+                .image("https://www.shutterstock.com/image-vector/wooden-special-table-isolate-on-white-2442457999")
                 .build();
         productRepository.save(pd3);
 
@@ -55,7 +55,7 @@ public class SampleDataInitializer implements ApplicationRunner {
                 .description("pillow")
                 .rating(4)
                 .price("100")
-                .image("sample.jpg")
+                .image("https://www.shutterstock.com/image-vector/wooden-special-table-isolate-on-white-2442457999")
                 .build();
         productRepository.save(pd4);
         Product pd5 =Product.builder()
@@ -64,7 +64,7 @@ public class SampleDataInitializer implements ApplicationRunner {
                 .description("pillow")
                 .rating(5)
                 .price("100")
-                .image("sample.jpg")
+                .image("https://www.shutterstock.com/image-vector/wooden-special-table-isolate-on-white-2442457999")
                 .build();
         productRepository.save(pd5);
         Product pd6 =Product.builder()
@@ -73,7 +73,7 @@ public class SampleDataInitializer implements ApplicationRunner {
                 .description("pillow")
                 .rating(6)
                 .price("100")
-                .image("sample.jpg")
+                .image("https://www.shutterstock.com/image-vector/wooden-special-table-isolate-on-white-2442457999")
                 .build();
         productRepository.save(pd6);
 
@@ -83,7 +83,7 @@ public class SampleDataInitializer implements ApplicationRunner {
                 .description("table")
                 .rating(7)
                 .price("100")
-                .image("sample.jpg")
+                .image("https://www.shutterstock.com/image-vector/wooden-special-table-isolate-on-white-2442457999")
                 .build();
         productRepository.save(pd7);
         Product pd8 =Product.builder()
@@ -92,7 +92,7 @@ public class SampleDataInitializer implements ApplicationRunner {
                 .description("table")
                 .rating(8)
                 .price("100")
-                .image("sample.jpg")
+                .image("https://www.shutterstock.com/image-vector/wooden-special-table-isolate-on-white-2442457999")
                 .build();
         productRepository.save(pd8);
         Product pd9 =Product.builder()
@@ -101,7 +101,7 @@ public class SampleDataInitializer implements ApplicationRunner {
                 .description("Table")
                 .rating(9)
                 .price("100")
-                .image("sample.jpg")
+                .image("https://www.shutterstock.com/image-vector/wooden-special-table-isolate-on-white-2442457999")
                 .build();
         productRepository.save(pd9);
         Product pd10 =Product.builder()
@@ -110,7 +110,7 @@ public class SampleDataInitializer implements ApplicationRunner {
                 .description("chair")
                 .rating(10)
                 .price("100")
-                .image("sample.jpg")
+                .image("https://www.shutterstock.com/image-vector/wooden-special-table-isolate-on-white-2442457999")
                 .build();
         productRepository.save(pd10);
         Product pd11 =Product.builder()
@@ -119,7 +119,7 @@ public class SampleDataInitializer implements ApplicationRunner {
                 .description("chair")
                 .rating(11)
                 .price("100")
-                .image("sample.jpg")
+                .image("https://www.shutterstock.com/image-vector/wooden-special-table-isolate-on-white-2442457999")
                 .build();
         productRepository.save(pd11);
         Product pd12 =Product.builder()
@@ -128,7 +128,7 @@ public class SampleDataInitializer implements ApplicationRunner {
                 .description("chair")
                 .rating(12)
                 .price("100")
-                .image("sample.jpg")
+                .image("https://www.shutterstock.com/image-vector/wooden-special-table-isolate-on-white-2442457999")
                 .build();
         productRepository.save(pd12);
         Product pd13 =Product.builder()
@@ -137,7 +137,7 @@ public class SampleDataInitializer implements ApplicationRunner {
                 .description("chair")
                 .rating(13)
                 .price("100")
-                .image("sample.jpg")
+                .image("https://www.shutterstock.com/image-vector/wooden-special-table-isolate-on-white-2442457999")
                 .build();
         productRepository.save(pd13);
         Product pd14 =Product.builder()
@@ -146,7 +146,7 @@ public class SampleDataInitializer implements ApplicationRunner {
                 .description("chair")
                 .rating(14)
                 .price("100")
-                .image("sample.jpg")
+                .image("https://www.shutterstock.com/image-vector/wooden-special-table-isolate-on-white-2442457999")
                 .build();
         productRepository.save(pd14);
         Product pd15 =Product.builder()
@@ -155,7 +155,7 @@ public class SampleDataInitializer implements ApplicationRunner {
                 .description("chair")
                 .rating(15)
                 .price("100")
-                .image("sample.jpg")
+                .image("https://www.shutterstock.com/image-vector/wooden-special-table-isolate-on-white-2442457999")
                 .build();
         productRepository.save(pd15);
     }
