@@ -1,6 +1,8 @@
 package com.thales
 
+
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +11,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import com.thales.databinding.ActivityListingBinding
+import com.thales.networking.SortType
+import com.thales.networking.SortingOrder
 
 
 class ProductListingActivity : AppCompatActivity() {
@@ -36,6 +40,7 @@ class ProductListingActivity : AppCompatActivity() {
         adapter = ProductListingAdapter()
         binding.repositories.adapter = adapter
 
+
         productListingActivityViewModel.loading.observe(this) {
             when (it) {
                 true -> showLoading()
@@ -46,15 +51,27 @@ class ProductListingActivity : AppCompatActivity() {
             hideLoading()
             adapter.setItems(it)
         })
-        supportActionBar?.title = applicationContext.getString(R.string.MainActivity)
+
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return true
+    }
     override fun onOptionsItemSelected( item: MenuItem): Boolean {
         when (item.itemId) {
-            android.R.id.home -> {
-                finish()
+            R.id.sorttitle -> {
                 return true
             }
+            R.id.sort_criteria_id_asc -> {
+                productListingActivityViewModel.onOrderBySelected(SortType.ID, SortingOrder.ASC)
+                return true
+            }
+            R.id.sort_criteria_id_dsc -> productListingActivityViewModel.onOrderBySelected(SortType.ID, SortingOrder.DESC)
+            R.id.sort_criteria_price_asc -> productListingActivityViewModel.onOrderBySelected(SortType.PRICE, SortingOrder.ASC)
+            R.id.sort_criteria_price_dsc -> productListingActivityViewModel.onOrderBySelected(SortType.PRICE, SortingOrder.DESC)
+            R.id.sort_criteria_rating_asc -> productListingActivityViewModel.onOrderBySelected(SortType.RATING, SortingOrder.ASC)
+            R.id.sort_criteria_rating_dsc -> productListingActivityViewModel.onOrderBySelected(SortType.RATING, SortingOrder.DESC)
         }
         return super.onOptionsItemSelected(item)
     }

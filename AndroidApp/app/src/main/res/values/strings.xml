@@ -9,12 +9,13 @@
     <string name="previous">Previous</string>
 
 
+    <string name="sort_title">OrderBy</string>
     <string name="sort_criteria_id_asc">ID(from lowest)</string>
     <string name="sort_criteria_id_dsc">ID(from highest)</string>
-    <string name="sort_criteria_price_asc">ID(from lowest)</string>
-    <string name="sort_criteria_price_dsc">ID(from highest)</string>
-    <string name="sort_criteria_rating_asc">ID(from lowest)</string>
-    <string name="sort_criteria_rating_dsc">ID(from highest)</string>
+    <string name="sort_criteria_price_asc">Price(from lowest)</string>
+    <string name="sort_criteria_price_dsc">Price(from highest)</string>
+    <string name="sort_criteria_rating_asc">Rating(from lowest)</string>
+    <string name="sort_criteria_rating_dsc">Rating(from highest)</string>
 
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 

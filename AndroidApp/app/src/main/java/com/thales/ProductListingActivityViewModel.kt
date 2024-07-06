@@ -1,7 +1,10 @@
 package com.thales
 
 import androidx.lifecycle.*
+import com.thales.networking.GetAllProductsRequestDto
 import com.thales.networking.RequestFactory
+import com.thales.networking.SortType
+import com.thales.networking.SortingOrder
 import com.thales.networking.ThalesProductRepository
 import io.reactivex.disposables.CompositeDisposable
 
@@ -16,20 +19,29 @@ class ProductListingActivityViewModel(
 
     var repos: MutableLiveData<List<ProductViewModel>> = MutableLiveData()
     var loading: MutableLiveData<Boolean> = MutableLiveData()
+    var sortCriteria : MutableLiveData<Pair<String, String>> = MutableLiveData()
+
     var searchInput : String = ""
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     fun onCreate() {
-        getAllProducts("")
+        val requestDto = requestFactory.getRequestForAllProducts("")
+        getAllProducts(requestDto)
     }
 
     fun onClickSearchBtn() {
-        getAllProducts(searchInput)
+        val requestDto = requestFactory.getRequestForAllProducts(searchInput)
+        getAllProducts(requestDto)
     }
 
-    private fun getAllProducts(searchInput: String) {
+    fun onOrderBySelected(sortType: SortType, sortingOrder: SortingOrder) {
+        val requestDto = requestFactory.getRequestForAllProducts(searchInput, sortType, sortingOrder)
+        getAllProducts(requestDto)
+    }
+
+    private fun getAllProducts(requestDto: GetAllProductsRequestDto) {
         val subscribe = repository
-            .getProducts(requestFactory.getRequestForAllProducts(searchInput))
+            .getProducts(requestDto)
             .subscribeOn(schedulers.ioScheduler())
             .observeOn(schedulers.uiScheduler())
             .doOnSubscribe {
