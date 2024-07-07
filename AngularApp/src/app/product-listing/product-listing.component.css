@@ -13,11 +13,43 @@
 
 .search-container {
     display: flex;
-    justify-content: flex-start;
-    align-items: normal;
 }
 
 .input-search {
     height: 73px;
     background-color: #dbdbdb;
+}
+
+.btn-search {
+    height: 73px;
+    width: 100px;
+    background-color: rgb(24, 132, 226);
+}
+
+.mat-icon-button:hover {
+    background-color: rgb(24, 132, 226);
+  }
+
+.product-table-container {
+    display: flex;
+    justify-content: center;
+}
+
+.product-table {
+    width: 95%;
+}
+
+.product-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.product-table th,
+.product-table td {
+    padding: 8px;
+    text-align: left;
+}
+
+.product-table th {
+    background-color: #f2f2f2;
 }
