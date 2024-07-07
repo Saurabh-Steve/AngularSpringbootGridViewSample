@@ -21,7 +21,7 @@ public class SampleDataInitializer implements ApplicationRunner {
 
         Product pd1 =Product.builder()
                 .id(1L)
-                .name("(Table1")
+                .name("Table1")
                 .description("furniture")
                 .rating(1)
                 .price("100")
@@ -31,7 +31,7 @@ public class SampleDataInitializer implements ApplicationRunner {
 
         Product pd2 =Product.builder()
                 .id(2L)
-                .name("(Chair1")
+                .name("Chair1")
                 .description("furniture")
                 .rating(2)
                 .price("100")
@@ -41,7 +41,7 @@ public class SampleDataInitializer implements ApplicationRunner {
 
  Product pd3 =Product.builder()
                 .id(3L)
-                .name("(Pillow1")
+                .name("Pillow1")
                 .description("furniture")
                 .rating(3)
                 .price("100")
@@ -51,7 +51,7 @@ public class SampleDataInitializer implements ApplicationRunner {
 
         Product pd4=Product.builder()
                 .id(4L)
-                .name("(Pillow2")
+                .name("Pillow2")
                 .description("furniture")
                 .rating(4)
                 .price("100")
@@ -60,7 +60,7 @@ public class SampleDataInitializer implements ApplicationRunner {
         productRepository.save(pd4);
         Product pd5 =Product.builder()
                 .id(5L)
-                .name("(Pillow3")
+                .name("Pillow3")
                 .description("furniture")
                 .rating(5)
                 .price("100")
@@ -69,7 +69,7 @@ public class SampleDataInitializer implements ApplicationRunner {
         productRepository.save(pd5);
         Product pd6 =Product.builder()
                 .id(6L)
-                .name("(Pillow4")
+                .name("Pillow4")
                 .description("furniture")
                 .rating(6)
                 .price("100")
@@ -79,7 +79,7 @@ public class SampleDataInitializer implements ApplicationRunner {
 
         Product pd7 =Product.builder()
                 .id(7L)
-                .name("(Table2")
+                .name("Table2")
                 .description("furniture")
                 .rating(7)
                 .price("100")

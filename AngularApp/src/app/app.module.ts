@@ -17,6 +17,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select'; 
+import { MatOptionModule } from '@angular/material/core';
 import { ProductListingComponent } from './product-listing/product-listing.component';
 import { HeaderComponent } from './header/header.component';
 
@@ -46,6 +48,8 @@ import { ApiService } from '../service/ApiService';
     MatFormFieldModule,
     MatToolbarModule,
     MatCardModule,
+    MatSelectModule,
+    MatOptionModule,
     BrowserAnimationsModule,
   ],
   providers: [],
