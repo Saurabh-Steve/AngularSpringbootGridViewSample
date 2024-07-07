@@ -31,8 +31,8 @@ export class ProductListingComponent implements OnInit {
     this.loadProducts();
   }
 
-  loadProducts() {
-    this.apiService.getProducts({ name: undefined,
+  loadProducts(n? : string) {
+    this.apiService.getProducts({ name: n,
        page: this.currentPage,
         size: this.pageSize, 
         sortType: 'id',
@@ -41,5 +41,10 @@ export class ProductListingComponent implements OnInit {
       this.page = data;
       this.products = data.content;
     })
+  }
+
+   onClickSearch() {
+    this.currentPage = 0;
+    this.loadProducts(this.searchQuery);
   }
 }

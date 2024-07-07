@@ -108,7 +108,7 @@ public class SampleDataInitializer implements ApplicationRunner {
                 .id(10L)
                 .name("Chair2")
                 .description("furniture")
-                .rating(10)
+                .rating(0)
                 .price("100")
                 .image("https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png")
                 .build();
@@ -117,7 +117,7 @@ public class SampleDataInitializer implements ApplicationRunner {
                 .id(11L)
                 .name("Chair3")
                 .description("furniture")
-                .rating(11)
+                .rating(1)
                 .price("100")
                 .image("https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png")
                 .build();
@@ -126,7 +126,7 @@ public class SampleDataInitializer implements ApplicationRunner {
                 .id(12L)
                 .name("Chair4")
                 .description("furniture")
-                .rating(12)
+                .rating(2)
                 .price("100")
                 .image("https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png")
                 .build();
@@ -135,7 +135,7 @@ public class SampleDataInitializer implements ApplicationRunner {
                 .id(13L)
                 .name("Chair5")
                 .description("furniture")
-                .rating(13)
+                .rating(3)
                 .price("100")
                 .image("https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png")
                 .build();
@@ -144,7 +144,7 @@ public class SampleDataInitializer implements ApplicationRunner {
                 .id(14L)
                 .name("Chair6")
                 .description("furniture")
-                .rating(14)
+                .rating(4)
                 .price("100")
                 .image("https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png")
                 .build();
@@ -153,7 +153,7 @@ public class SampleDataInitializer implements ApplicationRunner {
                 .id(15L)
                 .name("Chair7")
                 .description("furniture")
-                .rating(15)
+                .rating(5)
                 .price("100")
                 .image("https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png")
                 .build();

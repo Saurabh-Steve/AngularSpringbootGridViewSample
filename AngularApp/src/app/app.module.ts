@@ -20,6 +20,8 @@ import {MatCardModule} from '@angular/material/card';
 import { ProductListingComponent } from './product-listing/product-listing.component';
 import { HeaderComponent } from './header/header.component';
 
+import { ApiService } from '../service/ApiService';
+
 
 @NgModule({
   declarations: [
@@ -44,7 +46,7 @@ import { HeaderComponent } from './header/header.component';
     MatFormFieldModule,
     MatToolbarModule,
     MatCardModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
