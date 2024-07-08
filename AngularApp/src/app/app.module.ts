@@ -23,13 +23,15 @@ import { ProductListingComponent } from './product-listing/product-listing.compo
 import { HeaderComponent } from './header/header.component';
 
 import { ApiService } from '../service/ApiService';
+import { ProductDialogComponent } from './product-dialog/product-dialog.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    ProductListingComponent
+    ProductListingComponent,
+    ProductDialogComponent
   ],
   imports: [
     BrowserModule,

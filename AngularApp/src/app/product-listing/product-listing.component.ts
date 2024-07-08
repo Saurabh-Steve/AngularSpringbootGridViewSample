@@ -4,6 +4,8 @@ import { Page } from '../../models/Page'
 import { Product } from '../../models/Product';
 import { ApiService } from '../../service/ApiService';
 import { catchError, of } from 'rxjs';
+import { ProductDialogComponent } from '../product-dialog/product-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-product-listing',
@@ -12,26 +14,30 @@ import { catchError, of } from 'rxjs';
 })
 export class ProductListingComponent implements OnInit {
  
-  displayedColumns: string[] = ['id', 'name', 'description', 'rating', 'price', 'image'];
+  displayedColumns: string[] = ['id', 'name', 'description', 'rating', 'price', 'image', 'edit'];
   products: Product[] = [];
   page?: Page<Product>;
-  pageSize = 3;
+  pageSize = 50;
+  pageSizeOptions: number[] = [5, 10];
   currentPage = 0;
   searchQuery = '';
+  sortType = 'ID';
+  order = 'ASC';
 
 
-  constructor(private apiService: ApiService) {
-  }
+  constructor(private apiService: ApiService
+    , public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.loadProducts();
   }
 
-  loadProducts(n? : string, sortType?: string, direction?: string) {
-    const type = (sortType == undefined) ? 'id' : sortType;
+  loadProducts(n? : string, sortType?: string, direction?: string, currentPage?: number) {
+    console.log("sortType "+sortType)
+    const type = (sortType == undefined) ? 'ID' : sortType;
     const orderType = (direction == undefined) ? 'ASC' : direction;
     this.apiService.getProducts({ name: n,
-       page: this.currentPage,
+       page: currentPage ? currentPage : this.currentPage,
         size: this.pageSize, 
         sortType: type,
          order: orderType})
@@ -57,44 +63,69 @@ export class ProductListingComponent implements OnInit {
 
   onSelectionChange(event: Event) {
     const selectedValue = (event.target as HTMLSelectElement).value;
-    let sortType = 'ID';
-    let order = 'ASC';
     switch(selectedValue)
     {
       case '1':
-        sortType = 'ID';
-        order = 'ASC';
+        this.sortType = 'ID';
+        this.order = 'ASC';
         break;
       case '2':
-        sortType = 'ID';
-        order = 'DESC';
+        this.sortType = 'ID';
+        this.order = 'DESC';
         break;
       case '3':
-        sortType = 'PRICE';
-        order = 'ASC';
+        this.sortType = 'PRICE';
+        this.order = 'ASC';
         break;
       case '4':
-        sortType = 'PRICE';
-        order = 'DESC';
+        this.sortType = 'PRICE';
+        this.order = 'DESC';
         break;
       case '5':
-        sortType = 'RATING';
-        order = 'ASC';
+        this.sortType = 'RATING';
+        this.order = 'ASC';
         break;
       case '6':
-        sortType = 'RATING';
-        order = 'DESC';
+        this.sortType = 'RATING';
+        this.order = 'DESC';
         break;
       case '7':
-        sortType = 'NAME';
-        order = 'ASC';
+        this.sortType = 'NAME';
+        this.order = 'ASC';
         break;       
       case '8':
-        sortType = 'NAME';
-        order = 'DESC';
+        this.sortType = 'NAME';
+        this.order = 'DESC';
         break;
     }
 
-    this.loadProducts(this.searchQuery, sortType, order);
+    this.loadProducts(this.searchQuery, this.sortType, this.order);
   }
+
+  openDialog(product?: Product) {
+    const dialogRef = this.dialog.open(ProductDialogComponent, {
+      width: '600px',
+      data: product
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        if (result.id > 0) {
+          this.apiService.updateProduct(result).subscribe(() => {
+            this.loadProducts(this.searchQuery, this.sortType, this.order);
+          });
+       } else {
+          this.apiService.addProduct(result).subscribe(() => {
+            this.loadProducts(this.searchQuery, this.sortType, this.order);
+          });
+        }
+      }
+    });
+
+  }
+
+  // onPageChange(event: any) {
+  //   this.loadProducts(this.searchQuery, this.sortType, this.order, event.pageIndex);
+  // }
+
 }

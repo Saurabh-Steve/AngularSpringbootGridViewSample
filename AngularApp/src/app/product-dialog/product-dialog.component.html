@@ -1,0 +1,46 @@
+<div  >
+    <h1 mat-dialog-title class="edit-dialog-title">Edit product</h1>
+     <div mat-dialog-content class="edit-dialog-content">
+        <div class="edit-dialog-row">
+            <div class="edit-dialog-column">
+                <mat-form-field>
+                    <mat-label>name</mat-label>
+                    <input matInput [(ngModel)]="product.name" name="name" required>
+                </mat-form-field>
+            </div>
+            <div class="edit-dialog-column">
+                <mat-form-field>
+                    <mat-label>description</mat-label>
+                    <input matInput [(ngModel)]="product.description" name="description" required>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="edit-dialog-row">
+            <div class="edit-dialog-column">
+                <mat-form-field>
+                    <mat-label>Price</mat-label>
+                    <input matInput [(ngModel)]="product.price" name="price" required>
+                </mat-form-field>
+            </div>
+            <div class="edit-dialog-column">
+                <mat-form-field>
+                    <mat-label>Rating</mat-label>
+                    <input matInput [(ngModel)]="product.rating" name="rating" required>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="edit-dialog-row">
+            <div class="edit-dialog-column">
+                <mat-form-field>
+                    <mat-label>Image</mat-label>
+                    <input matInput [(ngModel)]="product.image" name="image" required>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
+    </div>
+    <div mat-dialog-actions class="edit-dialog-actions">
+        <button mat-button class="edit-dialog-cancel" (click)="onCancelClick()">Cancel</button>
+        <button mat-button color="primary" class="edit-dialog-save" (click)="onSaveClick()">Save</button>
+    </div>  
+</div>

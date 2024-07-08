@@ -1,0 +1,43 @@
+
+
+.edit-dialog-title {
+    font-size: 20px;
+  }
+  
+  .edit-dialog-content {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    justify-content: center;
+    font-size: small;
+  }
+  
+  .edit-dialog-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .edit-dialog-column {
+    flex: 1;
+    margin-right: 10px;
+  }
+  
+  .error-message {
+    color: red;
+    margin-top: 10px;
+    font-size: small;
+  }
+  
+  .edit-dialog-actions {
+    justify-content: flex-end;
+  }
+  
+  .edit-dialog-cancel {
+    margin-right: 10px;
+  }
+  
+  .edit-dialog-save {
+    margin-left: auto;
+  }
+  

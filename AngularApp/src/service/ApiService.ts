@@ -9,6 +9,8 @@ import {Pagination} from '../models/Pagination';
     providedIn: 'root'
   })
 export class ApiService {
+    
+    
     apiUrl = 'http://localhost:8080/api';
     constructor(private http: HttpClient) { }
 
@@ -27,5 +29,12 @@ export class ApiService {
         }
         return this.http.get<Page<Product>>(`${this.apiUrl}/products`, { params });
       }
+
+    updateProduct(result: Product) {
+        return this.http.post(`${this.apiUrl}`+`/product/update`, result);
+    }
     
+    addProduct(result: string) {
+        return this.http.post(`${this.apiUrl}`+`/product/add`, result);
+    }
 }
