@@ -19,6 +19,7 @@ class ProductListingActivityViewModel(
 
     var repos: MutableLiveData<List<ProductViewModel>> = MutableLiveData()
     var loading: MutableLiveData<Boolean> = MutableLiveData()
+    var dialogProduct: ProductViewModel? = null
     var sortCriteria : MutableLiveData<Pair<String, String>> = MutableLiveData()
 
     var searchInput : String = ""
@@ -56,6 +57,27 @@ class ProductListingActivityViewModel(
             }.subscribe({
                 loading.value = false
                 repos.value = it
+            }, {
+                loading.value = false
+                it.printStackTrace()
+            })
+        compositeDisposable.add(subscribe)
+    }
+
+    fun onSave(n:String, desc:String, p:String, r:Int, url:String) {
+        dialogProduct = ProductViewModel("0", n, description = desc, displayPrice = p,
+            rating = r, featureImageUrl = url)
+
+        val subscribe = repository.addProduct(requestFactory.getRequestForAddProduct(dialogProduct))
+            .subscribeOn(schedulers.ioScheduler())
+            .observeOn(schedulers.uiScheduler())
+            .doOnSubscribe {
+                loading.value = true
+            }.doOnError {
+                loading.value = false
+            }.subscribe({
+                val requestDto = requestFactory.getRequestForAllProducts(searchInput)
+                getAllProducts(requestDto)
             }, {
                 loading.value = false
                 it.printStackTrace()

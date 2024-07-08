@@ -1,7 +1,9 @@
 package com.thales.networking
 
 import io.reactivex.Observable
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface ProductApi {
@@ -14,4 +16,10 @@ interface ProductApi {
                       @Query("size") size: Int,
                       @Query("sortType") sortType: SortType,
                       @Query("order") order: SortingOrder):Observable<ProductResponse>
+
+    @POST("product/update")
+    fun updateProduct(@Body requestDto: UpdateProductRequestDto): Observable<Product>
+
+    @POST("product/add")
+    fun addProduct(@Body requestDto:AddProductRequestDto): Observable<Product>
 }

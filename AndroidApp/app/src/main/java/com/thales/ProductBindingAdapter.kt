@@ -72,4 +72,5 @@ object ProductBindingAdapter {
                 })
                 .into(imageView)
     }
+
 }

@@ -1,10 +1,15 @@
 package com.thales
 
 
+
+import android.app.Dialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.EditText
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -13,12 +18,14 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.thales.databinding.ActivityListingBinding
 import com.thales.networking.SortType
 import com.thales.networking.SortingOrder
+import com.thales.networking.ThalesProductRepository
 
 
 class ProductListingActivity : AppCompatActivity() {
     private lateinit var binding: ActivityListingBinding
 
     private lateinit var adapter: ProductListingAdapter
+    private lateinit var dialog: Dialog
 
     private val productListingActivityViewModel: ProductListingActivityViewModel
             by lazy {
@@ -36,7 +43,7 @@ class ProductListingActivity : AppCompatActivity() {
             productListingActivityViewModel
         )
 
-        binding.repositories.layoutManager = GridLayoutManager(this, 2)
+        binding.repositories.layoutManager = GridLayoutManager(this, 1)
         adapter = ProductListingAdapter()
         binding.repositories.adapter = adapter
 
@@ -51,6 +58,31 @@ class ProductListingActivity : AppCompatActivity() {
             hideLoading()
             adapter.setItems(it)
         })
+
+        binding.addPdtIcon.setOnClickListener {
+            onClickAdd();
+        }
+    }
+
+
+    private fun onClickAdd() {
+        val dialog = Dialog(this)
+        val view = this.layoutInflater.inflate(R.layout.customdialoglayout, null)
+        dialog.setContentView(view)
+        dialog.show()
+
+        view.findViewById<View>(R.id.save).setOnClickListener {
+            val name = (view.findViewById<EditText>(R.id.d_name) as EditText).text.toString()
+            val price = (view.findViewById<EditText>(R.id.d_price) as EditText).text.toString()
+            val desc = (view.findViewById<EditText>(R.id.d_desc) as EditText).text.toString()
+            val r = (view.findViewById<EditText>(R.id.d_rating) as EditText).text.toString()
+            val url = (view.findViewById<EditText>(R.id.d_image) as EditText).text.toString()
+            dialog.dismiss()
+            productListingActivityViewModel.onSave(name, desc, price, Integer.parseInt(r), url)
+        }
+        view.findViewById<View>(R.id.cancel_button).setOnClickListener {
+            dialog.dismiss()
+        }
 
     }
 
@@ -85,4 +117,5 @@ class ProductListingActivity : AppCompatActivity() {
         binding.loader.hide()
         binding.loader.visibility = View.GONE
     }
+
 }

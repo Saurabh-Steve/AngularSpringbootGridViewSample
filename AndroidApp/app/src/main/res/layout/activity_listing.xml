@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             android:orientation="horizontal"
-            android:padding="20dp">
+            android:padding="5dp">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/searchInput"
                 android:layout_width="250dp"
@@ -44,8 +44,15 @@
                     android:layout_height="50dp"
                     android:text="Search"
                     android:onClick="@{() -> vm.onClickSearchBtn()}"
-                    android:layout_centerInParent="true"
                     android:background="@color/toolbar_background"/>
+                   <ImageView
+                       android:id="@+id/addPdtIcon"
+                       android:layout_width="50dp"
+                       android:layout_height="50dp"
+                       android:src="@drawable/add_icon"
+                       android:layout_marginLeft="15dp"
+                       android:layout_alignParentRight="true"/>
+
             </RelativeLayout>
         </LinearLayout>
 

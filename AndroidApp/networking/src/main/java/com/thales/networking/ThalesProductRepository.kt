@@ -15,4 +15,12 @@ class ThalesProductRepository()  {
                it.content
             }
     }
+
+    fun updateProduct(requestDto: UpdateProductRequestDto, thalesService: ProductApi = APIClient.getClient().create(ProductApi::class.java)): Observable<Product> {
+        return thalesService.updateProduct(requestDto)
+    }
+
+    fun addProduct(requestDto: AddProductRequestDto, thalesService: ProductApi = APIClient.getClient().create(ProductApi::class.java)): Observable<Product> {
+        return thalesService.addProduct(requestDto)
+    }
 }

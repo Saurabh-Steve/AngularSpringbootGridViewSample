@@ -8,6 +8,8 @@ docker build -f .\Dockerfile.dockerfile -t my-database .
 docker run --detach --name=my-database -p 52000:3306  --env="MYSQL_ROOT_PASSWORD=root" MySQL
 
 Application has a Mock Data initializer to add some mock data.
+Images are not hosted locally and are all third party URLs.
+In actual scenario images will be S3 bucket link if AWS env.
 
 
 Android

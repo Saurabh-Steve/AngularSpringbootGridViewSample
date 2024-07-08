@@ -2,7 +2,9 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
         <import type="com.thales.ProductBindingAdapter" />
 
         <variable
@@ -18,22 +20,33 @@
         android:elevation="5dp"
         app:cardCornerRadius="5dp">
 
+        <TextView
+            android:id="@+id/editBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|bottom"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="40dp"
+            android:background="@color/cardview_light_background"
+            android:text="" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
 
             <ImageView
                 android:id="@+id/imageView"
                 imageUrl="@{vm.featureImageUrl}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
                 android:padding="2dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:src="@drawable/drawable_img"
-                android:adjustViewBounds="true"/>
+                tools:src="@drawable/drawable_img" />
 
             <com.thales.widgets.RobotoMediumTextView
                 android:id="@+id/brandName"
@@ -44,7 +57,7 @@
                 android:layout_marginTop="10dp"
                 android:text="@{vm.productName}"
                 android:textColor="@color/text_color_dark"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/imageView"
@@ -58,63 +71,44 @@
                 android:layout_marginLeft="40dp"
                 android:layout_marginTop="10dp"
                 android:maxLines="2"
-                android:text="@{vm.productName}"
+                android:text="@{vm.description}"
                 android:textColor="@color/text_color_dark"
-                android:textSize="15sp"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/brandName"
                 tools:text="FENTY BEAUTY" />
 
             <com.thales.widgets.RobotoMediumTextView
                 android:id="@+id/originalPrice"
-                text="@{vm.displayPrice}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="20dp"
+                android:text="@{vm.displayPrice}"
                 android:textColor="@color/text_color_dark"
                 android:textSize="15sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/productName"
-                tools:text="$33" />
-
-            <com.thales.widgets.RobotoMediumTextView
-                android:id="@+id/discountedPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginLeft="40dp"
-                android:text="@{vm.displayPrice}"
-                android:textColor="@color/text_color_dark"
-                android:textSize="15sp"
-                app:layout_constraintLeft_toRightOf="@id/originalPrice"
-                app:layout_constraintTop_toBottomOf="@id/productName"
                 tools:text="S26.20" />
-
-            <com.thales.widgets.RobotoMediumTextView
-                android:id="@+id/discount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginLeft="40dp"
-                android:text="discount"
-                android:textColor="@color/text_color_dark"
-                android:textSize="15sp"
-                app:layout_constraintLeft_toRightOf="@id/discountedPrice"
-                app:layout_constraintTop_toBottomOf="@id/productName" />
 
             <androidx.appcompat.widget.AppCompatRatingBar
                 android:id="@+id/ratingBar"
                 style="?android:attr/ratingBarStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:max="5"
                 android:rating="@{vm.rating}"
                 android:stepSize="1"
                 android:theme="@style/RatingBar"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/discount" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/originalPrice"
+                app:layout_constraintVertical_bias="1.0"
+                tools:layout_editor_absoluteX="15dp" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
