@@ -77,7 +77,7 @@
         </div>
       </div>
 
-    <!-- <mat-paginator  [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)" 
-    showFirstLastButtons aria-label="Select page">
-    </mat-paginator> -->
+    <mat-paginator  [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)" 
+    showFirstLastButtons aria-label="Select page" [pageIndex]="currentPage">
+    </mat-paginator>
 </div>

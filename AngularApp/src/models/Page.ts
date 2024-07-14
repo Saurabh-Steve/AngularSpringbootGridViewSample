@@ -5,4 +5,5 @@ export interface Page<T> {
     number: number;
     hasNext: boolean;
     totalPages: number;
+    totalElements: number;
 }

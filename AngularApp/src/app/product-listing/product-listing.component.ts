@@ -17,12 +17,14 @@ export class ProductListingComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'description', 'rating', 'price', 'image', 'edit'];
   products: Product[] = [];
   page?: Page<Product>;
-  pageSize = 50;
+  pageSize = 5;
   pageSizeOptions: number[] = [5, 10];
   currentPage = 0;
   searchQuery = '';
+  applicableSearchQuery = '';
   sortType = 'ID';
   order = 'ASC';
+  length = 0;
 
 
   constructor(private apiService: ApiService
@@ -37,7 +39,7 @@ export class ProductListingComponent implements OnInit {
     const type = (sortType == undefined) ? 'ID' : sortType;
     const orderType = (direction == undefined) ? 'ASC' : direction;
     this.apiService.getProducts({ name: n,
-       page: currentPage ? currentPage : this.currentPage,
+       page: currentPage ? currentPage : 0,
         size: this.pageSize, 
         sortType: type,
          order: orderType})
@@ -50,15 +52,19 @@ export class ProductListingComponent implements OnInit {
       if (data) { 
         this.page = data;
         this.products = data.content;
+        this.length = data.totalElements;
+        this.currentPage = data.number;
       } else {
         this.products = [];
       }
+     
     });
   }
 
    onClickSearch() {
     this.currentPage = 0;
-    this.loadProducts(this.searchQuery);
+    this.applicableSearchQuery = this.searchQuery;
+    this.loadProducts(this.applicableSearchQuery);
   }
 
   onSelectionChange(event: Event) {
@@ -99,7 +105,7 @@ export class ProductListingComponent implements OnInit {
         break;
     }
 
-    this.loadProducts(this.searchQuery, this.sortType, this.order);
+    this.loadProducts(this.searchQuery, this.sortType, this.order, 0);
   }
 
   openDialog(product?: Product) {
@@ -124,8 +130,8 @@ export class ProductListingComponent implements OnInit {
 
   }
 
-  // onPageChange(event: any) {
-  //   this.loadProducts(this.searchQuery, this.sortType, this.order, event.pageIndex);
-  // }
+  onPageChange(event: any) {
+   this.loadProducts(this.applicableSearchQuery, this.sortType, this.order, event.pageIndex);
+  }
 
 }

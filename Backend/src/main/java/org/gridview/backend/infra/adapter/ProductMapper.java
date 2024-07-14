@@ -12,7 +12,7 @@ public class ProductMapper {
     public Page<Product> map(org.springframework.data.domain.Page<org.gridview.backend.infra.entity.Product> pdts) {
         List products = pdts.getContent().stream().map(p -> new Product(p.getId(), p.getName(), p.getPrice()
         ,p.getRating(), p.getImage(), p.getDescription())).toList();
-        return new Page<Product>(products, pdts.getNumber(), pdts.hasNext(), pdts.getTotalPages());
+        return new Page<Product>(products, pdts.getNumber(), pdts.hasNext(), pdts.getTotalPages(), (int) pdts.getTotalElements());
     }
 
     public Product reverseMap(org.gridview.backend.infra.entity.Product entity) {

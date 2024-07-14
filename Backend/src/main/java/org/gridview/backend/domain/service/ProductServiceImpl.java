@@ -31,7 +31,7 @@ public class ProductServiceImpl implements ProductService {
         String searchCriteria = name == null ? "%" : name;
         Page<Product> page= productPersistencePort.findAllProductsLikeName(searchCriteria, PageRequest.of(pageNo, size), sort, order);
         List products = page.getContent().stream().map(p -> new Product(p.getId(), p.getName(), p.getPrice(), p.getRating(), p.getImage(), p.getDescription())).toList();
-        return new Page<ProductDto>(products, page.getNumber(), page.isHasNext(), page.getTotalPages());
+        return new Page<ProductDto>(products, page.getNumber(), page.isHasNext(), page.getTotalPages(), page.getTotalElements());
     }
 
     @Override
