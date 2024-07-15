@@ -3,13 +3,11 @@ package com.thales
 
 
 import android.app.Dialog
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.EditText
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -18,10 +16,10 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.thales.databinding.ActivityListingBinding
 import com.thales.networking.SortType
 import com.thales.networking.SortingOrder
-import com.thales.networking.ThalesProductRepository
 
 
 class ProductListingActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityListingBinding
 
     private lateinit var adapter: ProductListingAdapter
@@ -57,6 +55,7 @@ class ProductListingActivity : AppCompatActivity() {
         productListingActivityViewModel.repos.observe(this, Observer {
             hideLoading()
             adapter.setItems(it)
+            adapter.setOnEditClickListener { vm: ProductViewModel -> productListingActivityViewModel.update(vm) }
         })
 
         binding.addPdtIcon.setOnClickListener {
@@ -117,5 +116,6 @@ class ProductListingActivity : AppCompatActivity() {
         binding.loader.hide()
         binding.loader.visibility = View.GONE
     }
+
 
 }

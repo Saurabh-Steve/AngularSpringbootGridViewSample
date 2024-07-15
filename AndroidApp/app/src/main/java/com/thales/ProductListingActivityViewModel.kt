@@ -76,6 +76,7 @@ class ProductListingActivityViewModel(
             }.doOnError {
                 loading.value = false
             }.subscribe({
+                loading.value = true
                 val requestDto = requestFactory.getRequestForAllProducts(searchInput)
                 getAllProducts(requestDto)
             }, {
@@ -88,5 +89,24 @@ class ProductListingActivityViewModel(
     override fun onCleared() {
         super.onCleared()
         compositeDisposable.dispose()
+    }
+
+    fun update(vm: ProductViewModel) {
+        val subscribe = repository.updateProduct(requestFactory.getRequestForUpdateProduct(vm))
+            .subscribeOn(schedulers.ioScheduler())
+            .observeOn(schedulers.uiScheduler())
+            .doOnSubscribe {
+                loading.value = true
+            }.doOnError {
+                loading.value = false
+            }.subscribe({
+                loading.value = true
+                val requestDto = requestFactory.getRequestForAllProducts(searchInput)
+                getAllProducts(requestDto)
+            }, {
+                loading.value = false
+                it.printStackTrace()
+            })
+        compositeDisposable.add(subscribe)
     }
 }

@@ -20,5 +20,15 @@ class RequestFactory {
         )
     }
 
+    fun getRequestForUpdateProduct(value: ProductViewModel?): UpdateProductRequestDto {
+        return  UpdateProductRequestDto(
+            id =  value!!.id,
+            name = value.productName,
+            description = value.description,
+            price = value.displayPrice,
+            rating = value.rating,
+            image = value.featureImageUrl
+        )
+    }
 
 }

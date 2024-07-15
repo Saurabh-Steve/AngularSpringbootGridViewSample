@@ -17,6 +17,10 @@ Application has a Mock Data initializer to add some mock data.
 Images are not hosted locally and are all third party URLs.
 In actual scenario images will be S3 bucket link if AWS env.
 
+Springboot profile used
+-D spring.profiles.active=dev
+
+
 
 Android
 Search by product name:
